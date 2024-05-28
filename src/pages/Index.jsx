@@ -29,17 +29,14 @@ const Index = () => {
     recognition.onresult = async (event) => {
       const transcript = event.results[0][0].transcript;
       setTranscribedText(transcript);
-      const translated = await translateText(transcript);
-      setTranslatedText(translated);
+      setTranscribedText(transcript);
     };
 
     recognition.onerror = (event) => {
       console.error("Speech recognition error", event.error);
     };
 
-    if (isListening) {
-      recognition.stop();
-    } else {
+    if (!isListening) {
       recognition.start();
     }
   };
@@ -62,14 +59,14 @@ const Index = () => {
   };
 
   useEffect(() => {
+    const translate = async () => {
+      const translated = await translateText(transcribedText);
+      setTranslatedText(translated);
+    };
     if (transcribedText) {
-      const translate = async () => {
-        const translated = await translateText(transcribedText);
-        setTranslatedText(translated);
-      };
       translate();
     }
-  }, [transcribedText]);
+  }, [transcribedText, selectedLanguage]);
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #000000)">
