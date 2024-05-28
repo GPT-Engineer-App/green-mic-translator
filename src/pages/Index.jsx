@@ -77,7 +77,7 @@ const Index = () => {
         </Box>
         <Box width="100%" p={4} borderWidth={1} borderRadius="md">
           <Text fontSize="lg" color="white">
-            Translated Text:
+            Translated Text in {languages.find((lang) => lang.code === selectedLanguage)?.name}:
           </Text>
           <Text color="white">{translatedText}</Text>
         </Box>
