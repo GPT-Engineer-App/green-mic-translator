@@ -61,6 +61,16 @@ const Index = () => {
     return data.choices[0].text.trim();
   };
 
+  useEffect(() => {
+    if (transcribedText) {
+      const translate = async () => {
+        const translated = await translateText(transcribedText);
+        setTranslatedText(translated);
+      };
+      translate();
+    }
+  }, [transcribedText]);
+
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #000000)">
       <VStack spacing={4} width="100%">
