@@ -61,7 +61,7 @@ const Index = () => {
           <Input placeholder="Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} color="white" />
           <Input placeholder="API KEY" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} color="white" />
         </HStack>
-        <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
+        <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)} color="white">
           {languages.map((lang) => (
             <option key={lang.code} value={lang.code}>
               {lang.name}
