@@ -55,11 +55,11 @@ const Index = () => {
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #434343)">
+    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #000000)">
       <VStack spacing={4} width="100%">
         <HStack spacing={4} width="100%">
-          <Input placeholder="OpenAI Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} />
-          <Input placeholder="OpenAI API Key" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} />
+          <Input placeholder="Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} />
+          <Input placeholder="API KEY" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} />
         </HStack>
         <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
           {languages.map((lang) => (
@@ -70,12 +70,16 @@ const Index = () => {
         </Select>
         <IconButton aria-label="Start voice recognition" icon={<FaMicrophone />} size="lg" colorScheme="green" onClick={handleMicrophoneClick} />
         <Box width="100%" p={4} borderWidth={1} borderRadius="md">
-          <Text fontSize="lg">Transcribed Text:</Text>
-          <Text>{transcribedText}</Text>
+          <Text fontSize="lg" color="white">
+            Transcribed Text:
+          </Text>
+          <Text color="white">{transcribedText}</Text>
         </Box>
         <Box width="100%" p={4} borderWidth={1} borderRadius="md">
-          <Text fontSize="lg">Translated Text:</Text>
-          <Text>{translatedText}</Text>
+          <Text fontSize="lg" color="white">
+            Translated Text:
+          </Text>
+          <Text color="white">{translatedText}</Text>
         </Box>
       </VStack>
     </Container>
