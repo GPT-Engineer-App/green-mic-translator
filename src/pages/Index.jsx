@@ -55,7 +55,7 @@ const Index = () => {
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #434343)">
       <VStack spacing={4} width="100%">
         <HStack spacing={4} width="100%">
           <Input placeholder="OpenAI Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} />
