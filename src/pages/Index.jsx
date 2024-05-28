@@ -5,7 +5,7 @@ import { FaMicrophone } from "react-icons/fa";
 const Index = () => {
   const [openAIBaseUrl, setOpenAIBaseUrl] = useState("");
   const [openAIApiKey, setOpenAIApiKey] = useState("");
-  const [selectedLanguage, setSelectedLanguage] = useState("es"); // Default to Spanish
+  const [selectedLanguage, setSelectedLanguage] = useState("zh");
   const [transcribedText, setTranscribedText] = useState("");
   const [translatedText, setTranslatedText] = useState("");
 
@@ -17,7 +17,10 @@ const Index = () => {
     { code: "ja", name: "Japanese" },
   ];
 
+  const [isListening, setIsListening] = useState(false);
+
   const handleMicrophoneClick = async () => {
+    setIsListening(!isListening);
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     recognition.lang = "en-US";
     recognition.interimResults = false;
@@ -34,7 +37,11 @@ const Index = () => {
       console.error("Speech recognition error", event.error);
     };
 
-    recognition.start();
+    if (isListening) {
+      recognition.stop();
+    } else {
+      recognition.start();
+    }
   };
 
   const translateText = async (text) => {
@@ -61,14 +68,14 @@ const Index = () => {
           <Input placeholder="Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} color="white" />
           <Input placeholder="API KEY" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} color="white" />
         </HStack>
-        <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)} color="white">
+        <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)} color="white" bg="black" borderColor="white">
           {languages.map((lang) => (
             <option key={lang.code} value={lang.code}>
               {lang.name}
             </option>
           ))}
         </Select>
-        <IconButton aria-label="Start voice recognition" icon={<FaMicrophone />} size="lg" colorScheme="green" onClick={handleMicrophoneClick} />
+        <IconButton aria-label="Start voice recognition" icon={<FaMicrophone />} size="lg" colorScheme={isListening ? "red" : "green"} onClick={handleMicrophoneClick} />
         <Box width="100%" p={4} borderWidth={1} borderRadius="md">
           <Text fontSize="lg" color="white">
             Transcribed Text:
