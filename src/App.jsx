@@ -1,4 +1,5 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, Link } from "react-router-dom";
+import { Box } from "@chakra-ui/react";
 import Index from "./pages/Index.jsx";
 
 function App() {

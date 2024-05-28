@@ -58,8 +58,8 @@ const Index = () => {
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" background="linear-gradient(to bottom, #000000, #000000)">
       <VStack spacing={4} width="100%">
         <HStack spacing={4} width="100%">
-          <Input placeholder="Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} />
-          <Input placeholder="API KEY" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} />
+          <Input placeholder="Base URL" value={openAIBaseUrl} onChange={(e) => setOpenAIBaseUrl(e.target.value)} color="white" />
+          <Input placeholder="API KEY" value={openAIApiKey} onChange={(e) => setOpenAIApiKey(e.target.value)} color="white" />
         </HStack>
         <Select placeholder="Select language" value={selectedLanguage} onChange={(e) => setSelectedLanguage(e.target.value)}>
           {languages.map((lang) => (
